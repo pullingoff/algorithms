@@ -11,13 +11,37 @@
 이때 c2에 있을 때 이동할 수 있는 경우의 수는 6가지고 a1에 있을 때 이동할 수 있는 경우의 수는 2가지입니다.
 ```
 
-![image](https://github.com/pullingoff/algorithm/assets/50111853/a9fa4134-3003-46c3-bab1-35aec34ea949)
-
+<img alt='8x8 좌표평면' src='https://github.com/pullingoff/algorithm/assets/50111853/a9fa4134-3003-46c3-bab1-35aec34ea949' width='200px' />
 
 - P: 8x8 좌표 평면상에서 현재 나이트가 위치한 곳의 좌표를 나타내는 두 문자로 구성된 문자열 (a1처럼 열/행)
 - R: 나이트가 이동할 수 있는 경우의 수
-- E:
+- E: c2->6, a1->2
 - P:
+- 1. 나이트가 이동할 수 있는 경로는 [[-2,-1], [-2,1], [-1,-2], [-1,2], [1,-2], [1,2], [2,-1], [2,1]]로 8가지다.
+  2. 위 경로를 배열에 담고, 반복문을 돌려
+  3. 이동이 가능(1<=x<=8, a<=y<=h)한지 확인
+  4. 이동이 가능하면 카운트 증가
+
+```js
+// a-h 중 몇번째 인덱스인지 찾기 위함
+const X = ['a', 'b', 'c', 'd', 'e', 'f', 'g','h'];
+const steps = [[-2,-1], [-2,1], [-1,-2], [-1,2], [1,-2], [1,2], [2,-1], [2,1]];
+
+function solution(knight) { 
+    const [x,y] = [X.indexOf(knight[0])+1, parseInt(knight[1])]
+    let result = 0;
+    for (const step of steps) {
+        const [nextX, nextY] = [x+step[0], y+step[1]];
+        if(nextX >= 1 && nextX <=8 && nextY >= 1 && nextY <= 8)
+            result++;
+    }
+    return result;
+}
+```
+
+_처음에는 위/아래/왼/오른쪽을 구분했는데 move가 정해져있으니 그럴필요 없었다..!_
+
+<img src='https://github.com/pullingoff/algorithm/assets/50111853/7d3478aa-568b-4a6f-b9a6-338c1e26e75d' width='500px' alt='메모' />
 
 ## 게임 개발
 
