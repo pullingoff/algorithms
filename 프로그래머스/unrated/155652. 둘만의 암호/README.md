@@ -2,6 +2,12 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/155652) 
 
+## 풀이
+
+![PREP 풀이과정](https://github.com/pullingoff/algorithm/assets/50111853/699acbe7-c024-4a17-960f-a92d27c8ac42)
+
+(주의사항은 코드 js에 있음)
+
 ### 성능 요약
 
 메모리: 33.5 MB, 시간: 0.18 ms
