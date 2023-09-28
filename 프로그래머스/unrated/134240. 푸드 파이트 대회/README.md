@@ -2,6 +2,10 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/134240) 
 
+## 풀이
+
+![푸드파이트대회 PREP](https://github.com/pullingoff/algorithm/assets/50111853/8736a37e-60e1-4122-9bf1-bac51c4f732f)
+
 ### 성능 요약
 
 메모리: 33.5 MB, 시간: 0.06 ms
