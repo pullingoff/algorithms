@@ -11,8 +11,8 @@ _“A spider reaches the liberty of space by means of its own thread.”_
 
 ## 팁 모으기
 
-- 문자열 반대로 해야하는 경우 .split()해서 배열로 만들고 .reverse().join()
-- 범위에 따라 나머지연산 (%=) 활용하기
+- 문자열을 반대로 붙여야하는 경우 `.split('')`해서 배열로 만들고 `.reverse().join()`
+- 범위에 따라 나머지연산 (`%=`) 활용하기
 
 ## 디렉토리 
 - Leecote: 나동빈 님의 책 '이것이 취업을 위한 코딩테스트다'에 나온 문제들을 풀어봅니다.
