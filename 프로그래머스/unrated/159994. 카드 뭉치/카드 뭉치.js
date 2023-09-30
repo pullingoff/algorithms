@@ -13,7 +13,7 @@ function solution(cards1, cards2, goal) {
     let cards1Idx = 0;
     let cards2Idx = 0;
     
-    for(let i=0; i<goal.length; i++) {
+    for(let i=0; i<=goal.length; i++) {
         let val = goal[i];
         if(val === cards1[cards1Idx]) {
             cards1Idx++;
