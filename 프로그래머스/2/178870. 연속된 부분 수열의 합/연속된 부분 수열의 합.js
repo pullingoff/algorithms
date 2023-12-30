@@ -11,8 +11,7 @@ function solution(sequence, k) {
     
     for (let start = 0; start < sequence.length; start++) {
         while(sum < k && end < sequence.length) {
-            sum += sequence[end];
-            end++;
+            sum += sequence[end++];
         }
         if(sum === k) {
             arr.push([start, end-1]);
