@@ -3,70 +3,60 @@ P: 보드판 2차원 배열
 R: R에서 시작해 G까지 갈 수 있는 최소한의 횟수
 E:
 P: bfs 사용하기
+- D거나 양끝일때 ++1;
 */
 
-function getPosition(board, char) {
+function getRPosition(board) {
     let [x,y] = [0,0];
     const boardLength = board.length;
     for (let i=0; i<boardLength; i++) {
-        if(board[i].includes(char)) {
-            x = i;
-            y = board[i].indexOf(char);
+        if(board[i].includes('R')) {
+            x = board[i].indexOf('R');
+            y = i;
         }
     }
+    // console.log(x,y)
     return [x,y]
 }
-
 function solution(board) {
-    const [startX, startY] = getPosition(board, 'R');
-    const [targetX, targetY] = getPosition(board, 'G');
-    const xLength = board.length;
-    const yLength = board[0].length;
+    let result = 0;
+    const newBoard = board.map(str => str.split(''));
+    const [startX, startY] = getRPosition(board);
+    const xLength = board[0].length;
+    const yLength = board.length;
+        
     const dx = [-1,1,0,0];
     const dy = [0,0,-1,1];
-    const visited = new Array(xLength).fill().map(_ => new Array(yLength).fill(false));
     
-    // 유정님 코드 참고
-    function isMovable(x, y) {
-        if(x<0 || x >= xLength || y < 0 || y >= yLength) {
-            return false;
-        } else if (board[x][y] === 'D') {
-            return false;
-        }
-        return true;
-    }
+    bfs(startX,startY);
     
-    visited[startX][startY] = true;
-    const queue = [{x: startX, y: startY, count: 0}];
-    
-    while(queue.length) {
-        let {x,y,count} = queue.shift();
-        // 도착했으면 리턴
-        if(x===targetX && y===targetY) {
-            return count;
-        }
-
-        for(let i=0; i<4; i++) {
-            let currX = x;
-            let currY = y;
-            let nextX = currX + dx[i];
-            let nextY = currY + dy[i];
-
-            // 움직일수 있는 만큼 움직이기
-            while (isMovable(nextX, nextY)) {
-                currX = nextX;
-                currY = nextY;
-                nextX += dx[i];
-                nextY += dy[i];
-            }
-
-            // 방문 처리
-            if(!visited[currX][currY]) {
-                visited[currX][currY] = true;
-                queue.push({x: currX, y: currY, count: count+1});
-            }
-        }
+    function bfs(x, y) {
+        const stack = [];
+        stack.push([x,y]);
         
+        while(stack.length) {
+            console.log(stack);
+            let [a,b] = stack.shift();
+            
+            for(let i=0; i<4; i++) {
+                const nx = x + dx[i];
+                const ny = y + dy[i];
+                
+                if (nx >= 0 && nx < xLength && ny >= 0 && ny < yLength && newBoard[ny][nx]) {
+                    if (newBoard[ny][nx] == 'G') {
+                        return result++; // 마지막 횟수 더해서 반환
+                    }
+                    if (newBoard[ny][nx] == 'D') {
+                        if(dx !== 0) { // 좌우이동    
+                            stack.push([ny, nx+i]);
+                        } else {
+                            stack.push([ny+i, nx]);
+                        }
+                        result++;
+                    }
+                }
+            }
+        }
     }
-    return -1
+    
 }
