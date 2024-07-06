@@ -19,5 +19,5 @@ var topKFrequent = function(nums, k) {
 };
 
 const sortByValue = (map) => {
-    return [...map.entries()].sort((a, b) => b.value - a.value)
+    return [...map.entries()].sort((a, b) => b[1] - a[1])
 }
