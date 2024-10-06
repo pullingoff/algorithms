@@ -5,3 +5,7 @@ export default function StoreListPage() {
     </div>
   );
 }
+
+export async function getServerSideProps() {
+  const stores = await fetch(``);
+}
