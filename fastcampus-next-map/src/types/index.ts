@@ -1,15 +1,66 @@
-export type StoreType = {
-  tel_no: string | null;
-  crtfc_gbn: string;
-  bizcnd_code_nm: string | null;
-  upso_nm: string;
-  y_dnts: string;
-  cob_code_nm: string;
-  x_cnts: string;
-  owner_nm: string | null;
-  rdn_addr_code: null;
-  rdn_code_nm: string;
-  cgg_code: string;
-  cgg_code_nm: string;
-  crtfc_gbn_nm: string;
-};
+export interface StoreType {
+  id: number;
+  phone?: string | null;
+  address?: string | null;
+  lat?: string | null;
+  lng?: string | null;
+  name?: string | null;
+  category?: string | null;
+  storeType?: string | null;
+  foodCertifyName?: string | null;
+  likes?: LikeInterface[];
+}
+
+export interface LikeInterface {
+  id: number;
+  storeId: number;
+  userId: number;
+  store?: StoreType;
+}
+
+export interface LikeApiResponse {
+  data: LikeInterface[];
+  totalPage?: number;
+  page?: number;
+}
+
+export interface CommentInterface {
+  id: number;
+  storeId: number;
+  userId: number;
+  store?: StoreType;
+  body: string;
+  user?: UserType;
+  createdAt: Date;
+}
+
+interface UserType {
+  id: number;
+  email: string;
+  name?: string | null;
+  image?: string | null;
+}
+
+export interface CommentApiResponse {
+  data: CommentInterface[];
+  totalPage?: number;
+  page?: number;
+}
+
+export interface StoreApiResponse {
+  data: StoreType[];
+  totalPage?: number;
+  totalCount?: number;
+  page?: number;
+}
+
+export interface LocationType {
+  lat?: string | null;
+  lng?: string | null;
+  zoom?: number;
+}
+
+export interface SearchType {
+  q?: string;
+  district?: string;
+}
