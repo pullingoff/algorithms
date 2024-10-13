@@ -9,6 +9,11 @@ import KakaoProvider from "next-auth/providers/kakao";
 const prisma = new PrismaClient();
 
 export const authOptions = {
+  session: {
+    strategy: "jwt" as const,
+    maxAge: 60 * 60 * 24, // 1 day
+    updateAge: 60 * 60 * 2, // 2 hours
+  },
   adapter: PrismaAdapter(prisma),
   providers: [
     // ...add more providers here
