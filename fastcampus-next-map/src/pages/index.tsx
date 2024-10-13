@@ -1,18 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-/* global kakao */
-
 import Map from "../components/Map";
 import { useState } from "react";
 import Markers from "@/components/Markers";
 import StoreBox from "@/components/StoreBox";
 import { StoreType } from "@/types";
 import axios from "axios";
-
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
 
 export default function Home({ stores }: { stores: StoreType }) {
   const [map, setMap] = useState(null);
