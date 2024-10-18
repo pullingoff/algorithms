@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import axios from "axios";
@@ -9,7 +7,6 @@ import Map from "@/components/Map";
 import Marker from "@/components/Marker";
 
 export default function StorePage() {
-  const [map, setMap] = useState(null);
   const router = useRouter();
   const { id } = router.query;
 

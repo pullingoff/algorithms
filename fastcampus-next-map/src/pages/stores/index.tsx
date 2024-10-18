@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 
 import Image from "next/image";
 import { StoreType } from "@/types";
@@ -10,25 +10,23 @@ import Loading from "@/components/Loading";
 import Loader from "@/components/Loader";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import SearchFilter from "@/components/SearchFilter";
+import { useRouter } from "next/router";
+import { useRecoilValue } from "recoil";
+import { searchState } from "@/atom";
 
 export default function StoreListPage() {
   const ref = useRef<HTMLDivElement | null>(null);
   const pageRef = useIntersectionObserver(ref, {});
   const isPageEnd = !!pageRef?.isIntersecting;
-  const [q, setQ] = useState<string | null>(null);
-  const [district, setDistrict] = useState<string | null>(null);
-
-  const searchParams = {
-    q: q,
-    district: district,
-  };
+  const search = useRecoilValue(searchState);
+  const router = useRouter();
 
   const fetchStores = async ({ pageParam = 1 }) => {
     const { data } = await axios("/api/stores?page=" + pageParam, {
       params: {
         limit: 10,
         page: pageParam,
-        ...searchParams,
+        ...search,
       },
     });
 
@@ -43,7 +41,7 @@ export default function StoreListPage() {
     hasNextPage,
     isError,
     isLoading,
-  } = useInfiniteQuery(["stores", searchParams], fetchStores, {
+  } = useInfiniteQuery(["stores", search], fetchStores, {
     getNextPageParam: (lastPage: any) =>
       lastPage.data?.length > 0 ? lastPage.page + 1 : undefined,
   });
@@ -77,15 +75,19 @@ export default function StoreListPage() {
 
   return (
     <div className="px-4 md:max-w-4xl mx-auto py-8">
-      <SearchFilter setQ={setQ} setDistrict={setDistrict} />
+      <SearchFilter />
       <ul role="list" className="divide-y divide-gray-100">
         {isLoading ? (
           <Loading />
         ) : (
           stores?.pages?.map((page, index) => (
             <React.Fragment key={index}>
-              {page.data.map((store: StoreType, i: string) => (
-                <li className="flex justify-between gap-x-6 py-5" key={i}>
+              {page.data.map((store: StoreType, i: number) => (
+                <li
+                  className="flex justify-between gap-x-6 py-5 cursor-pointer hover:bg-gray-50"
+                  key={i}
+                  onClick={() => router.push(`/stores/${store.id}`)}
+                >
                   <div className="flex gap-x-4">
                     <Image
                       src={
