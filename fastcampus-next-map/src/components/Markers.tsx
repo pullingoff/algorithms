@@ -1,13 +1,16 @@
 import { StoreType } from "@/types";
-import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { currentStoreState, mapState } from "@/atom";
 
 interface MarkersProps {
-  map: any;
-  setCurrentStore: Dispatch<SetStateAction<any>>;
   stores: StoreType[];
 }
 
-const Markers = ({ map, setCurrentStore, stores }: MarkersProps) => {
+const Markers = ({ stores }: MarkersProps) => {
+  const map = useRecoilValue(mapState);
+  const setCurrentStore = useSetRecoilState(currentStoreState);
+
   const loadKakaoMarkers = useCallback(() => {
     if (map) {
       // 식당 데이터 마커 띄우기
