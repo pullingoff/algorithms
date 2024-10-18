@@ -54,7 +54,10 @@ export default function Navbar() {
             <Link href="/stores" className="navbar__list--item--mobile">
               맛집 목록
             </Link>
-            <Link href="/stores/new" className="navbar__list--item--mobile">
+            <Link
+              href="/stores/StoreNewPage"
+              className="navbar__list--item--mobile"
+            >
               맛집 등록
             </Link>
             <Link href="/users/likes" className="navbar__list--item--mobile">
