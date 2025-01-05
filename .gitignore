@@ -1,3 +1,9 @@
 node_modules
 # Keep environment variables out of version control
 .env
+
+# wedding directory
+wedding/.vscode
+wedding/.yarn
+wedding/.pnp
+wedding/.pnp.js
