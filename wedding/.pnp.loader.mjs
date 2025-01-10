@@ -13,6 +13,7 @@ const SAFE_TIME = 456789e3;
 
 const PortablePath = {
   root: `/`,
+  dot: `.`,
   parent: `..`
 };
 const npath = Object.create(path);
@@ -23,6 +24,7 @@ if (process.platform === `win32`) {
   ppath.resolve = (...segments) => {
     if (segments.length > 0 && ppath.isAbsolute(segments[0])) {
       return path.posix.resolve(...segments);
+    } else {
       return path.posix.resolve(ppath.cwd(), ...segments);
     }
   };
