@@ -21,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src", 
+    "tsconfig.paths.json" // path 분리 가능 
   ]
 }
