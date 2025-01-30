@@ -1,16 +1,12 @@
 import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
 import styles from './App.module.scss'
-<<<<<<< Updated upstream
-import FullscreenMessage from './components/shared/FullScreenMessage'
 import Heading from './components/sections/Heading'
 import { Wedding } from './models/wedding'
 import Video from './components/sections/Video'
-=======
 import ImageGallery from './components/sections/ImageGallery'
 import Intro from './components/sections/Intro'
 import FullscreenMessage from './components/shared/FullscreenMessage'
->>>>>>> Stashed changes
 
 const cx = classNames.bind(styles)
 
@@ -41,7 +37,7 @@ function App() {
   }, [])
 
   if (loading) return <FullscreenMessage type="loading" />
-  if (error) return <FullscreenMessage type="error" />
+  if (error || !wedding) return <FullscreenMessage type="error" />
 
   const {
     date,
@@ -54,12 +50,8 @@ function App() {
 
   return (
     <div className={cx('container')}>
-<<<<<<< Updated upstream
       <Heading date={wedding?.date} />
       <Video />
-=======
-      <h2>만수와 순돌이의 wedding</h2>
-      <article>this font is credited by Wanted.</article>
       <Intro
         groomName={groom.name}
         brideName={bride.name}
@@ -69,7 +61,6 @@ function App() {
       />
       <ImageGallery images={galleryImages} />
       {JSON.stringify(wedding)}
->>>>>>> Stashed changes
     </div>
   )
 }
