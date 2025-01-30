@@ -1,12 +1,15 @@
 import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
 import styles from './App.module.scss'
-import FullscreenMessage from './components/shared/FullscreenMessage'
+import FullscreenMessage from './components/shared/FullScreenMessage'
+import Heading from './components/sections/Heading'
+import { Wedding } from './models/wedding'
+import Video from './components/sections/Video'
 
 const cx = classNames.bind(styles)
 
 function App() {
-  const [wedding, setWedding] = useState(null)
+  const [wedding, setWedding] = useState<Wedding | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
@@ -36,8 +39,8 @@ function App() {
 
   return (
     <div className={cx('container')}>
-      <h2>만수와 순돌이의 wedding</h2>
-      <article>this font is credited by Wanted.</article>
+      <Heading date={wedding?.date} />
+      <Video />
     </div>
   )
 }
