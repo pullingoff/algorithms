@@ -1,4 +1,4 @@
-import styles from './FullScreenMessage.module.scss'
+import styles from './FullscreenMessage.module.scss'
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)

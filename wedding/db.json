@@ -83,18 +83,20 @@
       "invitation": "소중한 분들을 초대합니다\n살랑이는 바람결에\n사랑이 묻어나는 계절입니다.\n여기 곱고 예쁜 두 사람이 사랑을 맺어\n인생의 반려자가 되려 합니다.\n새 인생을 시작하는 이 자리에 오셔서\n축복해 주시면 감사하겠습니다."
     },
     "galleryImages": [
-      "wedding_01",
-      "wedding_02",
-      "wedding_03",
-      "wedding_04",
-      "wedding_05",
-      "wedding_06",
-      "wedding_07",
-      "wedding_08",
-      "wedding_09",
-      "wedding_10",
-      "wedding_11",
-      "wedding_12"
+      "/assets/images/wedding_1.jpg",
+      "/assets/images/wedding_2.jpeg",
+      "/assets/images/wedding_3.png",
+      "/assets/images/wedding_4.jpg",
+      "/assets/images/wedding_5.jpg",
+      "/assets/images/wedding_6.jpg",
+      "/assets/images/wedding_7.webp",
+      "/assets/images/wedding_8.jpg",
+      "/assets/images/wedding_9.webp",
+      "/assets/images/wedding_10.jpeg",
+      "/assets/images/wedding_11.jpeg",
+      "/assets/images/wedding_12.jpeg",
+      "/assets/images/wedding_13.png",
+      "/assets/images/wedding_14.webp"
     ],
     "attendCount": 0
   }
