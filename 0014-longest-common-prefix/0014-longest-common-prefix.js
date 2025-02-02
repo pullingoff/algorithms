@@ -7,7 +7,7 @@
 var longestCommonPrefix = function(strs) {
     if(new Set(strs).size === 1) return strs[0];
 
-    strs.sort((a, b) => a.length - b.length) // 짧은 순으로 정렬
+    // strs.sort((a, b) => a.length - b.length) // 짧은 순으로 정렬
 
     const shortestLength = strs[0].length;
     const target = strs[0];
